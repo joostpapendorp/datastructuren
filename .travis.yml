@@ -1,0 +1,9 @@
+# Travis CI configuration
+# @see https://www.travis-ci.com
+language: java
+
+jdk:
+  - openjdk17
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
