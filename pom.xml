@@ -1,9 +1,9 @@
 <project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<name>template</name>
-	<artifactId>template</artifactId>
+	<name>IB1502 Datastructuren en Algoritmen</name>
+	<artifactId>Datastructuren</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<groupId>nl.papendorp.template</groupId>
+	<groupId>nl.papendorp.studie</groupId>
 
 	<packaging>jar</packaging>
 	<modelVersion>4.0.0</modelVersion>
