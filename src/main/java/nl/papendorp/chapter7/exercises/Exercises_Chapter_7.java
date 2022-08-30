@@ -86,14 +86,14 @@ public class Exercises_Chapter_7
 		// elements left to swap
 		// last element needs no swapping
 		var current = list.first();
-		for( var remaining = size; remaining >= 1; remaining -- )
+		for( var remaining = size; remaining >= 1; remaining-- )
 		{
 			// choose the amount of steps from the current position to swap with: 0..remaining (exclusive
 			var steps = randomInteger.apply( remaining );
 
 			// find the position to swap with, possibly current (steps == 0)
 			var swapPosition = current;
-			for( int j = 0; j< steps; j++)
+			for( int j = 0; j < steps; j++ )
 			{
 				swapPosition = list.after( swapPosition );
 				if( swapPosition == null )
@@ -105,6 +105,29 @@ public class Exercises_Chapter_7
 				list.addBefore( current, list.remove( swapPosition ) );
 			else
 				current = list.after( current );
+		}
+
+		return list;
+	}
+
+	public static < TYPE extends Comparable< TYPE > > PositionalList< TYPE > bubbleSort( final PositionalList< TYPE > list )
+	{
+		final var size = list.size();
+		for( var i = 0; i < size - 1; i++ )
+		{
+			var current = list.first();
+			for( var j = 1; j < size - i; j++ )
+			{
+				var next = list.after( current );
+
+				if( current.getElement().compareTo( next.getElement() ) > 0 )
+				{
+					var temp = current.getElement();
+					list.set( current, next.getElement() );
+					list.set( next, temp );
+				}
+				current = next;
+			}
 		}
 
 		return list;

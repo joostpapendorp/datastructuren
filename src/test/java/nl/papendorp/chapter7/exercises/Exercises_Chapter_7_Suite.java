@@ -1,15 +1,12 @@
 package nl.papendorp.chapter7.exercises;
 
 import net.datastructures.LinkedPositionalList;
-import net.datastructures.PositionalList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static nl.papendorp.chapter7.exercises.Exercises_Chapter_7.shuffleIndexed_7_6;
-import static nl.papendorp.chapter7.exercises.Exercises_Chapter_7.shufflePositional_7_6;
+import static nl.papendorp.chapter7.exercises.Exercises_Chapter_7.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -84,7 +81,7 @@ class Exercises_Chapter_7_Suite
 			given.add( i );
 		}
 
-		final java.util.List< Integer > result = shuffleIndexed_7_6( given );
+		final var result = shuffleIndexed_7_6( given );
 
 		for( var next : result )
 			System.out.print( next + " " );
@@ -106,12 +103,46 @@ class Exercises_Chapter_7_Suite
 			given.addLast( i );
 		}
 
-		final PositionalList< Integer > result = shufflePositional_7_6( given );
+		final var result = shufflePositional_7_6( given );
 
 		for( var next : result )
 			System.out.print( next + " " );
 		System.out.println();
 
 		assertThat( result, containsInAnyOrder( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ) );
+	}
+
+	@DisplayName( "C 7-45 Bubble sort for positional lists" )
+	@Test
+	void bubbleSort_random_positional_lists()
+	{
+		var given = new LinkedPositionalList< Integer >();
+
+		// able to reverse non-empty lists
+		for( int i = 0; i < 10; i++ )
+		{
+			given.addLast( i );
+		}
+
+		final var result = bubbleSort( shufflePositional_7_6( given ) );
+
+		assertThat( result, contains( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ) );
+	}
+
+	@DisplayName( "C 7-45 Bubble sort for positional lists" )
+	@Test
+	void bubbleSort_reverse_positional_lists()
+	{
+		var given = new LinkedPositionalList< Integer >();
+
+		// able to reverse non-empty lists
+		for( int i = 9; i >= 0; i-- )
+		{
+			given.addLast( i );
+		}
+
+		final var result = bubbleSort( given );
+
+		assertThat( result, contains( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ) );
 	}
 }
