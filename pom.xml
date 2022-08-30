@@ -115,6 +115,7 @@
 						<include>**/**Suite.*</include>
 						<include>**/**Test.*</include>
 					</includes>
+					<argLine>--enable-preview</argLine>
 				</configuration>
 			</plugin>
 
