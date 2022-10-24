@@ -1,24 +1,15 @@
 package nl.papendorp.chapter12.boyermoore;
 
+import nl.papendorp.chapter12.PatternMatcher;
+
 import java.util.HashMap;
 import java.util.Optional;
 
 import static java.util.Optional.empty;
 
-public class BoyerMoore
+public class BoyerMoore extends PatternMatcher
 {
-	private static final int ABSENT_FROM_PATTERN = -1;
-
-	public Optional< Integer > find( final String text, final String pattern )
-	{
-		if( pattern.isEmpty() ) return Optional.of( 0 );
-
-		if( text.length() < pattern.length() ) return empty();
-
-		return findPattern( text.toCharArray(), pattern.toCharArray() );
-	}
-
-	private Optional< Integer > findPattern( final char[] text, final char[] pattern )
+	protected Optional< Integer > findPattern( final char[] text, final char[] pattern )
 	{
 		final var lastOccurrenceInPattern = new HashMap< Character, Integer >( pattern.length );
 		/* The book also walks through the *entire* text here to add sentinels for characters that occur in the text, but
